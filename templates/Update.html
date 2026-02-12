@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah</title>
+</head>
+<body>
+    <form method="POST" action="/update">
+        <center>
+            <table>
+                <tr>
+                    <td><label>Nis</label></td>
+                    <td><input type="number" name="nis" value="{{ siswa_edit.nis }}" readonly></td>
+                </tr>
+                <tr>
+                    <td><label>Nilai Tugas</label></td>
+                    <td><input type="number" name="nilai_tugas" value="{{ siswa_edit.nilai_tugas }}" readonly></td>
+                </tr>
+                <tr>
+                    <td><label>Nilai UTS</label></td>
+                    <td><input type="text" name="nilai_uts" value="{{ siswa_edit.nilai_uts }}" required></td>
+                </tr>
+                <tr>
+                    <td><label>Nilai UAS</label></td>
+                    <td><input type="text" name="nilai_uas" value="{{ siswa_edit.nilai_uas }}" required></td>
+                </tr>
+                <tr>
+                    <td><label>Deskripsi</label></td>
+                    <td><input type="text" name="deskripsi" value="{{ siswa_edit.deskripsi }}" required></td>
+                </tr>
+                <tr>
+                    <td><label>Semester</label></td>
+                    <td><input type="text" name="semester" value="{{ siswa_edit.semester }}" required></td>
+                </tr>
+                <tr>
+                    <td><label>Tahun ajaran</label></td>
+                    <td><input type="text" name="tahun_ajaran" value="{{ siswa_edit.tahun_ajaran }}" required></td>
+                </tr>
+            </table>
+                <tr>
+                    <div class="btn-group">
+                        <button type="submit">Simpan Perubahan</button>
+                        <a href="/"> < Kembali ke form</a>
+                    </div>
+                </tr>    
+        </center>   
+    </form>
+</body>
+</html>

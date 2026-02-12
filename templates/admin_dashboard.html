@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Admin - Sistem Tiket Bioskop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- HEADER -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Sistem Tiket Bioskop</a>
+        <div class="d-flex text-white">
+            <span class="me-3">Admin: {{ nama }}</span>
+            <a href="/logout" class="btn btn-sm btn-danger">Logout</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- SIDEBAR -->
+        <div class="col-md-2 bg-light min-vh-100 p-3 border-end">
+            <h5 class="mb-4">Menu Admin</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                    <a href="/admin" class="nav-link active">Dashboard</a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="/admin/film" class="nav-link">Data Film</a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="/admin/studio" class="nav-link">Data Studio</a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="/admin/jadwal" class="nav-link">Data Jadwal</a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="/admin/laporan" class="nav-link">Laporan Transaksi</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="col-md-10 p-4">
+
+            <h4 class="mb-4">Dashboard Admin</h4>
+
+            <!-- TABEL DATA FILM -->
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    Data Film
+                </div>
+                <div class="card-body">
+
+                    <a href="/admin/film/tambah" class="btn btn-success mb-3">
+                        + Tambah Film
+                    </a>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Judul Film</th>
+                                    <th>Genre</th>
+                                    <th>Durasi (menit)</th>
+                                    <th>Harga Tiket</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for film in films %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ film.judul }}</td>
+                                    <td>{{ film.genre }}</td>
+                                    <td>{{ film.durasi }}</td>
+                                    <td>Rp {{ "{:,.0f}".format(film.harga) }}</td>
+                                    <td>
+                                        <a href="/admin/film/edit/{{ film.id }}" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="/admin/film/hapus/{{ film.id }}" 
+                                           class="btn btn-danger btn-sm"
+                                           onclick="return confirm('Yakin ingin menghapus data ini?')">
+                                           Hapus
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

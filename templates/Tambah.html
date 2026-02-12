@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah</title>
+</head>
+<body>
+    <form action="/Tambah" method="post">
+    <center>
+        <div >
+            <table>
+                <h2>Tambah Data Siswa</h2>
+                <input type="hidden" name="id_nilai" id="">
+
+                <tr>
+                    <td>Nis:</td>
+                    <td>
+                        <select name="nis" id="">
+                        {% for s in dropdown_siswa %}
+                        <option value="{{ s.nis }}">{{ s.nis }} - {{ s.nama }}</option>
+                        {% endfor %}
+                    </select></td>
+                    
+                </tr>
+                <tr>
+                    <td>Mapel</td>
+                    <td>
+                        <select name="id_mapel" id="">
+                        {% for s in dropdown_m %}
+                        <option value="{{ s.id_mapel }}">{{loop.index}} - {{ s.nama_mapel }} </option>
+                        {% endfor %}
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Nilai Tugas:</td>
+                    <td><input type="number" name="nilai_tugas" required></td>
+                </tr>
+                <tr>
+                    <td>Nilai UTS:</td>
+                    <td><input type="number" name="nilai_uts" required></td>
+                </tr>
+                <tr>
+                    <td>Nilai UAS:</td>
+                    <td><input type="number" name="nilai_uas" required></td>
+                </tr>
+                <tr>
+                    <td>Deskripsi:</td>
+                    <td><input type="text" name="deskripsi" required></td>
+                </tr>
+                <tr>
+                    <td>Semester:</td>
+                    <td><input type="number" name="semester" required></td>
+                </tr>
+                <tr>
+                    <td>Tahun Ajaran:</td>
+                    <td><input type="number" name="tahun_ajaran" required></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Simpan"></a></td>
+                </tr>
+            </table>
+            
+        </div>
+    </form>
+    </center>
+</body>
+</html>

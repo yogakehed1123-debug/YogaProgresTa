@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard User - Sistem Tiket Bioskop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- HEADER -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Sistem Tiket Bioskop</a>
+        <div class="d-flex text-white">
+            <span class="me-3">User: {{ nama }}</span>
+            <a href="/logout" class="btn btn-sm btn-danger">Logout</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+
+    <h4 class="mb-4">Daftar Film Tayang</h4>
+
+    <div class="row">
+        {% for film in films %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">{{ film.judul }}</h5>
+                    <p class="card-text">
+                        <strong>Genre:</strong> {{ film.genre }}<br>
+                        <strong>Durasi:</strong> {{ film.durasi }} menit<br>
+                        <strong>Harga:</strong> Rp {{ "{:,.0f}".format(film.harga) }}
+                    </p>
+                    <a href="/pesan/{{ film.id }}" class="btn btn-success w-100">
+                        Pesan Tiket
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <hr class="my-4">
+
+    <h4 class="mb-3">Riwayat Transaksi</h4>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>No</th>
+                    <th>Film</th>
+                    <th>Jumlah Tiket</th>
+                    <th>Total Bayar</th>
+                    <th>Tanggal</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for trx in transaksi %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ trx.judul }}</td>
+                    <td>{{ trx.jumlah_tiket }}</td>
+                    <td>Rp {{ "{:,.0f}".format(trx.total_harga) }}</td>
+                    <td>{{ trx.tanggal }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
